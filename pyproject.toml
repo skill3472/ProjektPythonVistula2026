@@ -1,11 +1,17 @@
 [project]
 name = "projektpythonvistula2026"
 version = "0.1.0"
-description = "Add your description here"
+description = "Project for intro to data science classes (Vistula University 2026/27)"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "kagglehub>=1.0.0",
     "matplotlib>=3.10.8",
     "pandas>=3.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "ruff>=0.15.10",
 ]
