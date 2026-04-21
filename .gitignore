@@ -9,3 +9,9 @@ wheels/
 
 # Virtual environments
 .venv
+
+# VS Code settings
+.vscode/
+
+# Compressed archives to send
+*.zip
