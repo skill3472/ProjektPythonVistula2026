@@ -15,3 +15,6 @@ wheels/
 
 # Compressed archives to send
 *.zip
+
+# Resulting models
+src/results/
