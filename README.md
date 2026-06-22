@@ -1,8 +1,15 @@
 # Projekt
 
-Numer grupy: 3
-Nazwa projektu: Analiza danych Letterboxd: Trendy na platformie oceniania filmów
-Opis: Analiza danych z platformy Letterboxd w celu identyfikacji trendów dotyczących rozkładu ocen filmów, preferencji producentów, popularności gatunków oraz aktywności użytkowników.
+**Numer grupy:** 3
+
+**Nazwa projektu:** Spersonalizowany system rekomendacji filmowych na podstawie danych użytkowników platformy Letterboxd
+
+**Opis:** Głównym celem projektu było przeprowadzenie procesu fine-tuningu dużego modelu językowego w taki sposób, aby potrafił on trafnie przewidzieć ocenę punktową, jaką konkretny użytkownik przyznałby danemu filmowi, bazując wyłącznie na jego krótkim opisie fabularnym. 
+
+Etapy projektu: 
+* Analiza danych z platformy Letterboxd w celu identyfikacji trendów dotyczących rozkładu ocen filmów, dominujących krajów produkcji, popularności gatunków oraz aktywności użytkowników. 
+* Wybór modelu HuggingFace Transformers.
+* Fine-tuning modelu LLM i interpretacja wyników.
 
 # Grupa
 
@@ -13,22 +20,6 @@ Opis: Analiza danych z platformy Letterboxd w celu identyfikacji trendów dotycz
 | 1 | 71883 | Kluska | Dawid |
 | 1 | 71634 | Surganow | Aleksander |
 
-
-# Wkład
-
-| ID | Nazwisko | Imię | Opis wkładu |
-|----|----------|------|-------------|
-| 73059 | Tym | Maksymilian | Przygotowanie danych. |
-| 72173 | Fąfara | Julia | Eksploracyjna analiza. |
-| 71883 | Kluska | Dawid | Interpretacja wniosków i przygotowanie raportu. |
-| 71634 | Surganow | Aleksander | Interpretacja wniosków i przygotowanie raportu. |
-
-# Pytania badawcze
-
-1. Jak wygląda rozkład ocen filmów i ich popularność na Letterboxd?
-2. Jakie kraje dominują w produkcji filmów dostępnych w bazie?
-3. Które gatunki filmowe są najpopularniejsze na platformie?
-4. Jak aktywni są użytkownicy platformy pod względem pisania recenzji?
 
 # Źródła danych
 
@@ -45,25 +36,8 @@ Letterboxd Movie Ratings Data
 
 **users_data:** `_id`, `display_name`, `num_ratings_pages`, `num_reviews`, `username`
 
-# Cechy
 
-`czyste_kraje`, `czyste_gatunki`
-
-# Analiza
-
-1. Rozkład średnich ocen filmów (z wykluczeniem filmów bez oceny)
-2. Top 15 krajów z największą liczbą filmów w bazie
-3. Liczba filmów w zależności od roku wydania
-4. Najczęstsze gatunki filmowe w bazie
-5. Aktywność użytkowników - rozkład liczby napisanych recenzji
-6. Top 10 najwyżej ocenianych filmów oraz filmów z największą liczbą głosów
-
-# Środowisko
-
-Python version: Python 3.13
-Main libraries: `kagglehub>=1.0.0`, `matplotlib>=3.10.8`, `pandas>=3.0.2`
-
-## Instalacja
+## Uruchomienie projektu i odtworzenie wyników
 
 Zależności i środowisko wirtualne można zainicjować przy użyciu uv lub pip.
 
@@ -81,13 +55,24 @@ source .venv/bin/activate
 pip install .
 ```
 
+### Pobranie danych
+W projekcie wykorzystany został duży zbiór danych, który nie jest załączony do repozytorium ze względu na rozmiar. Po uruchomieniu komórek w notatniku biblioteka kagglehub automatycznie pobierze zbiór bezpośrednio z platformy Kaggle i załaduje pliki CSV do środowiska.
+
+### Odtworzenie wyników
+Aby odtworzyć wyniki, należy otworzyć notatniki znajdujące się w folderze src i uruchomić wszystkie znajdujące się w nich komórki. Plik `analiza.ipynb` zawiera Eksploracyjną Analizę Danych (drugi etap projektu), a plik `finetuning.ipynb` zawiera trening modelu LLM (czwarty etap projektu).
+
+**Ważne uwagi dotyczące odtwarzalności:**
+* W kodzie zastosowano stałe ziarno losowości podczas podziału na zbiór testowy i treningowy, co gwarantuje identyczny rozkład danych przy każdym uruchomieniu.
+* Do szybkiego treningu zalecane jest użycie karty graficznej. Trening na samym procesorze jest możliwy, ale znacznie wydłuży czas wykonania. Sposób instalacji biblioteki torch różni się w zależności od posiadanego sprzętu. Aby model wykorzystywał akcelerację sprzętową, należy zainstalować bibliotekę dopasowaną do własnej karty graficznej.
+
 # Zawartość
 
 ```
-P2_3_Etap2/
+P5_3_LetterBoxd_72173/
 |
 |--- src/
 |------ analiza.ipynb
+|------ finetuning.ipynb
 |--- Raport.pdf
 |--- pyproject.toml
 |--- .gitignore
@@ -95,3 +80,9 @@ P2_3_Etap2/
 |--- README.md
 |--- uv.lock
 ```
+
+# Wykorzystanie narzędzi AI
+Podczas realizacji projektu wykorzystano modele językowe (Claude, Gemini) w charakterze wsparcia technicznego:
+* Pomoc przy debugowaniu kodu
+* Pomoc przy rozwiązywaniu problemów środowiskowych
+* Korekta dokumentacji
